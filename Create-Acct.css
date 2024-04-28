@@ -1,0 +1,10 @@
+body.CreateAcct {
+    background-image: url('createAccnt.jpg');
+    background-size: cover;
+    background-position: center;
+    
+}
+
+#formsubmit {
+    display: block;
+}

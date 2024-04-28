@@ -1,0 +1,29 @@
+
+
+body.main {
+    /* Set background image */
+    background-image: url('pic.jpg');
+    /* Adjust background size and positioning */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    /* Add more styles if needed */
+    display: flex;
+    justify-content: centre;
+    align-items: centre;
+    height: 100vh;
+}
+
+div.main {
+    width: 50%;
+    height: 30%;
+    margin-left: 25%;
+    margin-top:35%;
+    border-radius: 300px;
+}
+
+form.main{
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    text-justify: center;
+}

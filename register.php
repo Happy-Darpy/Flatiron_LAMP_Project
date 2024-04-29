@@ -8,10 +8,11 @@ header("Location: profile.php");
 include_once 'connect.php';
 
 if ( isset($_POST['sca']) ) {
-  $username = trim($_POST['username']);
-  $fname = trim($_POST['fname']);
-  $lname = trim($_POST['lname']);
-  $pass = trim($_POST['pass']);
+  $username = trim($_POST['UserName']);
+  $fname = trim($_POST['FirstName']);
+  $lname = trim($_POST['LastName']);
+  $pass = trim($_POST['password']);
+  $email = trim($_POST['email']);
   $password = hash('sha256', $pass);
 
   $query = "insert into people(username,fname,lname,pass) values(?, ?, ?, ?)";
@@ -24,7 +25,7 @@ if ( isset($_POST['sca']) ) {
     unset($fname);
     unset($lname);
     unset($pass);
-    header("Location: login.php");
+    header("Location: formSubmission.htm");
   }
   else
   {
@@ -32,16 +33,3 @@ if ( isset($_POST['sca']) ) {
   }
 }
 ?>
-
-<html>
-<head><title>Register</title></head>
-<body>
-<form action="register.php" method="post">
-Username: <input type="text" name="username" /><br /><br />
-First Name: <input type="text" name="fname" /><br /><br />
-Last Name: <input type="text" name="lname" /><br /><br />
-Password: <input type="password" name="pass" /><br /><br />
-<input type="submit" name="sca" value="Create Account" /> <br />
-</form>
-</body>
-</html>

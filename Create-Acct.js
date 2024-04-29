@@ -179,23 +179,6 @@ form.addEventListener("submit", function (event){
 
     try {
         //sendVerificationEmail();
-
-        let formData = new FormData(this);
-        console.log("doing fetch now");
-
-        fetch('test.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data); // Output response from PHP
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
-        console.log("now left fetch(test.php)");
     } catch (error) {
         console.error("error occured:", error);
     }

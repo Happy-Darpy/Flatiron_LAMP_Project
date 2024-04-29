@@ -9,7 +9,7 @@
 
 <body class="CreateAcct">
     <div class="CreateAcct">
-    <form action="" method="post" name="CreateAcct" onsubmit="return false">
+    <form action="./formSubmission.htm" method="post" name="CreateAcct" onsubmit="return false">
         <label for="First Name"><h4>First Name</h4></label>
         <input type="text" name="FirstName">
         <div class="fix" id="FirstName"></div>
@@ -19,13 +19,16 @@
         <input type="text" name="UserName">
         <label for="PassWord"><h4>Password</h4></label>
         <input type="password" name="password">
+        <h4 class="password_check" id="password_strength"></h4>
         <label for="confirm"><h4>Confirm Password</h4></label>
         <input type="password" name="pconfirm">
+        <h4 class="password_check" id="matched_passwd"></h4>
         <label for="email"><h4>Email Address</h4></label>
         <input type="email" name="email">
         <br/><br/>
-        <input type="submit" value="Submit">
-        <button type="button" onclick="return false">Clear!</button>
+        <h4 id="submitError"></h4>
+        <input type="submit" value="Submit" onsubmit="submit_clicked()">
+        <button type="button" onclick="clear_button_clicked()">Clear!</button>
 
     </form>
     </div>

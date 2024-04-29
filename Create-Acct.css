@@ -8,3 +8,7 @@ body.CreateAcct {
 #formsubmit {
     display: block;
 }
+
+h4.password_check {
+    display: inline;
+}

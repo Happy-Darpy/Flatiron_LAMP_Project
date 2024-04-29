@@ -7,7 +7,7 @@ header("Location: profile.php");
 
 include_once 'connect.php';
 
-if ( isset($_POST['sca']) ) {
+if ( isset($_POST['submit']) ) {
   $username = trim($_POST['UserName']);
   $fname = trim($_POST['FirstName']);
   $lname = trim($_POST['LastName']);

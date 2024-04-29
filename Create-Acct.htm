@@ -9,7 +9,7 @@
 
 <body class="CreateAcct">
     <div class="CreateAcct">
-    <form action="./register.php" method="post" name="CreateAcct" onsubmit="return false">
+    <form action="./register.php" method="post" name="CreateAcct">
         <label for="First Name"><h4>First Name</h4></label>
         <input type="text" name="FirstName">
         <div class="fix" id="FirstName"></div>
@@ -27,7 +27,7 @@
         <input type="email" name="email">
         <br/><br/>
         <h4 id="submitError"></h4>
-        <input type="submit" value="Submit" onsubmit="submit_clicked()">
+        <input type="submit" name="submit" value="Submit">
         <button type="button" onclick="clear_button_clicked()">Clear!</button>
 
     </form>

@@ -11,7 +11,7 @@ $username = trim($_POST['UserName']);
   $email = trim($_POST['email']);
   $password = hash('sha256', $pass);
 
-  error_log("username is :" + $username);
+  error_log("username is :" . $username);
 
   session_destroy();
 

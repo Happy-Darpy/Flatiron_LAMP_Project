@@ -2,18 +2,11 @@
 <html>
 <head>
   <title>Prevent Page Navigation</title>
-  <script>
-    // Function to prevent navigation
-    function preventNavigation() {
-      history.pushState(null, null, document.URL);
-      window.addEventListener('popstate', function () {
-        history.pushState(null, null, document.URL);
-      });
-    }
-  </script>
 </head>
 <body onload="preventNavigation()">
   <h1>Page Content</h1>
   <p>This is your page content.</p>
+  <h4 id="email"></h4>
 </body>
+<script src="./formSubmission.js"></script>
 </html>

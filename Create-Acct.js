@@ -179,8 +179,22 @@ form.addEventListener("submit", function (event){
 
     try {
         //sendVerificationEmail();
+
+        let formData = new FormData(this);
+
+        fetch('test.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data); // Output response from PHP
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     } catch (error) {
-        //console.error("error occured:", error);
+        console.error("error occured:", error);
     }
 
     form.submit();

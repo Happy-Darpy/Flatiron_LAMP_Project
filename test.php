@@ -3,8 +3,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-session_start();
-
 $username = trim($_POST['UserName']);
   $fname = trim($_POST['FirstName']);
   $lname = trim($_POST['LastName']);
@@ -14,9 +12,10 @@ $username = trim($_POST['UserName']);
 
   echo "username is :" . $username;
 
-  session_destroy();
-
   ?>
+
+  <p> the value of username</p>
+  <p> <?php echo $username ?></p>
 
 
 

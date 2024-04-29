@@ -181,6 +181,7 @@ form.addEventListener("submit", function (event){
         //sendVerificationEmail();
 
         let formData = new FormData(this);
+        console.log("doing fetch now");
 
         fetch('test.php', {
             method: 'POST',
@@ -193,6 +194,8 @@ form.addEventListener("submit", function (event){
         .catch(error => {
             console.error('Error:', error);
         });
+
+        console.log("now left fetch(test.php)");
     } catch (error) {
         console.error("error occured:", error);
     }

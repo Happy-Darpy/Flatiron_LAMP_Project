@@ -156,8 +156,9 @@ form.addEventListener("submit", function (event){
             submitError.innerHTML = errorMsg;
             return;
     }
-    let email_address = email.getAttribute.value;
+    let email_address = email.value;
     localStorage.setItem("email",email_address);
+    console.log(email_address);
     form.submit();
 });
 

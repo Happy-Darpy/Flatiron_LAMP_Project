@@ -8,3 +8,4 @@ function preventNavigation() {
   const email = localStorage.getItem("email");
   const textField = document.getElementById("email");
   textField.textContent = email;
+  console.log(email);

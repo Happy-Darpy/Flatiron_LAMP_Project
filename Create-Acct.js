@@ -152,6 +152,7 @@ form.addEventListener("submit", function (event){
     console.log("entered submit call back");
 
     event.preventDefault();
+
     let errCheck = formError['regex_check'] + 
                     formError['password_req'] +
                     formError['passwd_match'];
@@ -183,7 +184,7 @@ form.addEventListener("submit", function (event){
         console.error("error occured:", error);
     }
 
-    form.submit();
+    this.submit();
 });
 
 document.addEventListener('DOMContentLoaded', function () {

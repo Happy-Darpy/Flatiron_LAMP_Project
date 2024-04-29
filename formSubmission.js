@@ -6,6 +6,7 @@ function preventNavigation() {
   };
 
   const email = localStorage.getItem("email");
-  const confirm = localStorage.getItem("confirm");
+  //const confirm = localStorage.getItem("confirm");
   const textField = document.getElementById("email");
-  textField.textContent = email + ": " + confirm;
+  //textField.textContent = email + ": " /*+ confirm;*/
+  textField.textContent = email + ": can't send it right now"

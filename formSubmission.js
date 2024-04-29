@@ -6,6 +6,6 @@ function preventNavigation() {
   };
 
   const email = localStorage.getItem("email");
+  const confirm = localStorage.getItem("confirm");
   const textField = document.getElementById("email");
-  textField.textContent = email;
-  console.log(email);
+  textField.textContent = email + ": " + confirm;

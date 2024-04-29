@@ -4,6 +4,7 @@ let userName = document.getElementsByName('UserName')[0];
 let password = document.getElementsByName('password')[0];
 let pconfirm = document.getElementsByName('pconfirm')[0];
 let email = document.getElementsByName('email')[0];
+let email_confirm = "";
 let form = document.getElementsByName('CreateAcct')[0];
 let formErrorType = { Valid: 0, Missing : 4, Invalid : 1};
 // Assocaitive-Array will have 0 if there is no problem...
@@ -127,6 +128,22 @@ function clear_button_clicked(event) {
     location.reload();
 };
 
+function sendVerificationEmail() {
+    let email_address = email.value;
+    fetch('send_email.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: email_address })
+    })
+    .then(response => response.json())
+    .then(data => {
+      email_confirm = data.message;
+    })
+    .catch(error => console.error('Error:', error));
+  }
+
 form.addEventListener("submit", function (event){
     let submitError = document.getElementById("submitError");
     let errorMsg = "";
@@ -156,9 +173,17 @@ form.addEventListener("submit", function (event){
             submitError.innerHTML = errorMsg;
             return;
     }
+
     let email_address = email.value;
     localStorage.setItem("email",email_address);
-    console.log(email_address);
+    localStorage.setItem("confirm",email_confirm);
+
+    try {
+        sendVerificationEmail();
+    } catch (error) {
+        console.error("error occured:", error);
+    }
+
     form.submit();
 });
 

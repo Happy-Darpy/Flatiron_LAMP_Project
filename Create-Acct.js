@@ -176,12 +176,11 @@ form.addEventListener("submit", function (event){
 
     let email_address = email.value;
     localStorage.setItem("email",email_address);
-    //localStorage.setItem("confirm",email_confirm);
 
     try {
-        sendVerificationEmail();
+        //sendVerificationEmail();
     } catch (error) {
-        console.error("error occured:", error);
+        //console.error("error occured:", error);
     }
 
     form.submit();

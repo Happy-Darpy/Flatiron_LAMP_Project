@@ -13,7 +13,7 @@ error_log($_POST['CreateAcct']);
 error_log('value of $_POST["UserName"]');
 error_log($_POST['UserName']);
 
-if ( isset($_POST['CreateAcct']) ) {
+if ( isset($_POST['submit']) ) {
   $username = trim($_POST['UserName']);
   $fname = trim($_POST['FirstName']);
   $lname = trim($_POST['LastName']);

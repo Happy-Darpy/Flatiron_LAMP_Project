@@ -134,21 +134,18 @@ function onclick_submit()
     //error check
     console.log("entered submit call back");
 
-    for (key in formError) {
+    for (let key in formError) {
       let is_false = false;
       let errorMsg = "";
 
-      submitError.style.font = 'red';
-
-      console.log("checking over error now at: " + key);
-      console.log("   value here is : " + formError[key]);
+      submitError.style.color = 'red';
 
       if (formError[key] == formErrorType.Missing) {
          errorMsg = "One or More Entry is Missing!";
          is_false = true;
       }
-      if (formErro[key] == formErrorType.Invalid) {
-          errorMsg = "One or More Entry is Invalid!";t
+      if (formError[key] == formErrorType.Invalid) {
+          errorMsg = "One or More Entry is Invalid!";
           is_false = true;
       }
       if (is_false) {
@@ -156,12 +153,12 @@ function onclick_submit()
         return false;
       }
 
-      submitError.style.font = 'black';
+      submitError.style.color = 'black';
     }
 
     let email_address = email.value;
     localStorage.setItem("email",email_address);
-    return false;
+    return true;
 }
 
 document.addEventListener('DOMContentLoaded', function () {

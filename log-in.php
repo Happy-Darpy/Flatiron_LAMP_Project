@@ -38,7 +38,7 @@ if ( isset($_POST['sca']) ) {
     echo "row " . $row;
     echo "username " . $username;
     echo "password " . $password;
-    echo "count " . $count
+    echo "count " . $count;
   }
 ?>
 </h1></p>

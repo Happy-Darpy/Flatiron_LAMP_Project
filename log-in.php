@@ -19,7 +19,7 @@ if ( isset($_POST['sca']) ) {
 
     if( $count == 1 && $row['pass']==$password ) {
         $_SESSION['user'] = $row['userid'];
-        $message="Success!"
+        $message="Success!";
         header("Location: log-in.php");
     }
     else {

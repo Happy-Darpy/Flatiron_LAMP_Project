@@ -9,22 +9,22 @@
 
 <body class="CreateAcct">
     <div class="CreateAcct">
-    <form action="formSubmission.htm" method="post" name="CreateAcct" onsubmit="return onclick_submit()">
+    <form action="register.php" method="post" name="CreateAcct" onsubmit="return onclick_submit()">
         <label for="First Name"><h4>First Name</h4></label>
-        <input type="text" name="FirstName">
+        <input type="text" name="FirstName" required>
         <div class="fix" id="FirstName"></div>
         <label for="Last Name"><h4>Last Name</h4></label>
-        <input type="text" name="LastName">
+        <input type="text" name="LastName" required>
         <label for="username"><h4>User Name: alphanumeric and (.-_) minimum 8 characters</h4></label>
-        <input type="text" name="UserName">
+        <input type="text" name="UserName" required>
         <label for="PassWord"><h4>Password</h4></label>
-        <input type="password" name="password">
+        <input type="password" name="password" required>
         <h4 class="password_check" id="password_strength"></h4>
         <label for="confirm"><h4>Confirm Password</h4></label>
-        <input type="password" name="pconfirm">
+        <input type="password" name="pconfirm" required>
         <h4 class="password_check" id="matched_passwd"></h4>
         <label for="email"><h4>Email Address</h4></label>
-        <input type="email" name="email">
+        <input type="email" name="email" required>
         <br/><br/>
         <h4 id="submitError"></h4>
         <input type="submit" name="submit" value="Submit">

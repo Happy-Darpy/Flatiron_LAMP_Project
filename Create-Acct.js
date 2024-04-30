@@ -191,7 +191,7 @@ function onclick_submit()
     }
 
     let email_address = email.value;
-    //localStorage.setItem("email",email_address);
+    localStorage.setItem("email",email_address);
     return true;
 }
 

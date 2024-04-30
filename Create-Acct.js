@@ -5,7 +5,7 @@ let password = document.getElementsByName('password')[0];
 let pconfirm = document.getElementsByName('pconfirm')[0];
 let email = document.getElementsByName('email')[0];
 let email_confirm = "";
-let formErrorType = { Valid: 0, Invalid : 1};
+let formErrorType = { Valid: 0, Invalid : 1, Missing};
 let formError = {};
 // Assocaitive-Array will have 0 if there is no problem...
 
@@ -41,6 +41,7 @@ function check_name_input(event){
 
     if (input_field == "") {
         event.target.style.color = 'black';
+        formError[input_name] = formErrorType.Missing;
     };
 };
 
@@ -86,11 +87,12 @@ function check_password_strength(event) {
             default:
                 alert("what??");
         }
-        formError = formErrorType.Valid;
+        formError[input_name] = formErrorType.Valid;
     }
 
     if (lenPasswd==0) { 
         textPasswordStrength = "";
+        formError[input_name] = formErrorType.Missing;
     };
     elmPasswordStrength.innerHTML = textPasswordStrength;  
 };
@@ -113,6 +115,7 @@ function check_if_password_match(event){
 
     if (confirm_passwd == "") { 
         elmPassMatchMessage.innerHTML = "";
+        formError[input_name] = formErrorType.Missing;
     }
     else {
         elmPassMatchMessage.innerHTML = passwd_match;
@@ -132,13 +135,24 @@ function onclick_submit()
     //error check
     console.log("entered submit call back");
 
-    let formElements = myForm.formElements;
-    console.log(formElements);
-    if (formError == formErrorType.Invalid) {
-        submitError.style.color = 'red';
-        errorMsg = "One or More Entry is Invalid!";
+    for (key in formError) {
+      let is_false = false;
+      submitError.style.font = 'red';
+
+      if (formError[key] == formErrorType.Missing) {
+         errorMsg = "One or More Entry is Missing!";
+         is_false = true;
+      }
+      if (formError == formErrorType.Invalid) {
+          errorMsg = "One or More Entry is Invalid!";t
+          is_false = true;
+      }
+      if (is_false) {
         submitError.innerHTML = errorMsg;
         return false;
+      }
+
+      submitError.style.font = 'black';
     }
 
     let email_address = email.value;

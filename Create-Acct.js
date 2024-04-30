@@ -140,6 +140,9 @@ function onclick_submit()
 
       submitError.style.font = 'red';
 
+      console.log("checking over error now at: " + key);
+      console.log("   value here is : " + formError[key]);
+
       if (formError[key] == formErrorType.Missing) {
          errorMsg = "One or More Entry is Missing!";
          is_false = true;

@@ -12,6 +12,7 @@
   $stmt = $pdo->prepare($query);
   $stmt->execute([$_SESSION['user']]);
   $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+  $fname = $userRow['fnmae'];
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@
             </table>
             <input type="submit" action="index_main.htm" method="post" name="logout" value="LOGOUT">
             <?php
-               echo "userRow : $userRow";
+               echo "first name : $fname";
             ?>
         </form>
     </div>

@@ -5,7 +5,7 @@ let password = document.getElementsByName('password')[0];
 let pconfirm = document.getElementsByName('pconfirm')[0];
 let email = document.getElementsByName('email')[0];
 let email_confirm = "";
-let formErrorType = { Valid: 0, Invalid : 1, Missing};
+let formErrorType = { Valid: 0, Invalid : 1, Missing : 2};
 let formError = {};
 // Assocaitive-Array will have 0 if there is no problem...
 

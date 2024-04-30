@@ -144,14 +144,13 @@ function sendVerificationEmail() {
     .catch(error => console.error('Error:', error));
   }
 
-form.addEventListener("submit", function (event){
+function onclick_submit(event)
+{
     let submitError = document.getElementById("submitError");
     let errorMsg = "";
 
     //error check
     console.log("entered submit call back");
-
-    event.preventDefault();
 
     let errCheck = formError['regex_check'] + 
                     formError['password_req'] +
@@ -168,24 +167,16 @@ form.addEventListener("submit", function (event){
         case (errCheck > 4):
             errorMsg = "One or More Entry is Missing!";
             submitError.innerHTML = errorMsg;
-            return;
+            return false;
         case (errCheck > 0):
             errorMsg = "One or More Entry is Invalid!";
             submitError.innerHTML = errorMsg;
-            return;
+            return false;
     }
 
     let email_address = email.value;
     localStorage.setItem("email",email_address);
-
-    try {
-        //sendVerificationEmail();
-    } catch (error) {
-        console.error("error occured:", error);
-    }
-
-    this.submit();
-});
+};
 
 document.addEventListener('DOMContentLoaded', function () {
     firstName.addEventListener('input',check_name_input);

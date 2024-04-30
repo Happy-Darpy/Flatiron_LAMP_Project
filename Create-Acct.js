@@ -169,5 +169,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let urlParams = new URLSearchParams(window.location.search);
     let receivedData = urlParams.get('userexist');
-    alert("username status returned:" + receivedData);
+
+    if (receivedData == "yes") {
+        let warnUserExistTag = document.getElementById("userExist");
+        let messageTag = document.createElement("h3");
+
+        messageTag.style.color = "red";
+        messageTag.textContent = "USER NAME ALREADY TAKEN TRY AGAIN";
+
+        warnUserExistTag.insertAdjacentElement('afterend', messageTag);
+    }
+
 });

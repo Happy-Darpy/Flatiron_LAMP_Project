@@ -123,12 +123,7 @@ function check_if_password_match(event){
 }
 
 function clear_button_clicked(event) {
-    // Get the base URL without parameters
-    let baseUrl = window.location.origin + window.location.pathname;
-
-    // Reload the page without parameters
-    window.location.href = baseUrl;
-
+    history.pushState({}, document.title, "/");
     location.reload();
 };
 

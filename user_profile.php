@@ -13,6 +13,7 @@
   $stmt->execute([$_SESSION['user']]);
   $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
   $fname = $userRow['fname'];
+  $lname = $userRow['lname'];
 ?>
 
 <!DOCTYPE html>
@@ -30,11 +31,11 @@
             <table>
                 <tr>
                     <td>First Name:</td>
-                    <td>Izaya</td>
+                    <td><?php echo $fname; ?></td>
                 </tr>
                 <tr>
                     <td>Last Name:</td>
-                    <td>Suzuki</td>
+                    <td><?php echo $lname; ?></td>
                 </tr>
                 <tr>
                     <td>Email Address:</td>

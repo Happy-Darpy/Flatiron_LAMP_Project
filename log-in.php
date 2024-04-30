@@ -43,7 +43,7 @@ if ( isset($_POST['sca']) ) {
 ?>
 </h1></p>
 
-<form action="login.php" method="post">
+<form action="log-in.php" method="post">
 Username: <input type="text" name="username" /><br /><br />
 Password: <input type="password" name="pass" /><br /><br />
 <input type="submit" name="sca" value="Login" /> <br />

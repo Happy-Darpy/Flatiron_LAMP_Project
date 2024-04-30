@@ -164,5 +164,9 @@ document.addEventListener('DOMContentLoaded', function () {
     userName.addEventListener('input',check_name_input);
     password.addEventListener('input',check_password_strength);
     pconfirm.addEventListener('input',check_if_password_match);
-    email.addEventListener('input',check_name_input)
+    email.addEventListener('input',check_name_input);
+
+    let urlParams = new URLSearchParams(window.location.search);
+    let receivedData = urlParams.get('userexist');
+    alert("username status returned:" + receivedData);
 });

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-i/* f( isset($_SESSION['user'])!="" ){
+/* if( isset($_SESSION['user'])!="" ){
    header("Location: index.php");
 } */
 include_once 'connect.php';

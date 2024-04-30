@@ -37,7 +37,7 @@ session_start();
     <div class="LogIn">
     <form action="log-in.php" method="post" onsubmit="log_in_submit()">
         <label for="LogIn"><h4>Please LogIn</h4></label>
-        <input type="text" name="usename" required>
+        <input type="text" name="username" required>
         <label for="password-log"><h4>Password</h4></label>
         <input type="password" name="pwd" required>
         <input type="submit" value="Submit" name="sca">

@@ -45,6 +45,8 @@ session_start();
            if ( isset($_POST['sca']) )
            {
              echo "<h2>$message</h2>";
+             echo "username : $username";
+             echo "password: $password";
            }
 
            if( isset($_SESSION['user'])!="" ) 

@@ -16,7 +16,7 @@ session_start();
 
     if( $count == 1 && $row['pass']==$password ) {
         $_SESSION['user'] = $row['userid'];
-        header("Location: user_profile.htm");
+        header("Location: user_profile.php");
     }
     else {
         $message = "Invalid Login";

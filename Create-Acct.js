@@ -130,20 +130,21 @@ function onclick_submit()
 {
     let myForm = document.getElementsByName("CreateAcct")[0];
     let submitError = document.getElementById("submitError");
-    let errorMsg = "";
 
     //error check
     console.log("entered submit call back");
 
     for (key in formError) {
       let is_false = false;
+      let errorMsg = "";
+
       submitError.style.font = 'red';
 
       if (formError[key] == formErrorType.Missing) {
          errorMsg = "One or More Entry is Missing!";
          is_false = true;
       }
-      if (formError == formErrorType.Invalid) {
+      if (formErro[key] == formErrorType.Invalid) {
           errorMsg = "One or More Entry is Invalid!";t
           is_false = true;
       }

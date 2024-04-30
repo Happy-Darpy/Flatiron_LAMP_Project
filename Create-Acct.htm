@@ -11,20 +11,20 @@
     <div class="CreateAcct">
     <form action="register.php" method="post" name="CreateAcct" onsubmit="return onclick_submit()">
         <label for="FirstName"><h4>First Name</h4></label>
-        <input type="text" name="FirstName" required>
+        <input type="text" name="FirstName" id="FirstName" required>
         <div class="fix" id="FirstName"></div>
         <label for="LastName"><h4>Last Name</h4></label>
-        <input type="text" name="LastName" required>
+        <input type="text" name="LastName" id="LastName" required>
         <label for="username"><h4>User Name: alphanumeric and (.-_) minimum 8 characters</h4></label>
-        <input type="text" name="UserName" required>
+        <input type="text" name="UserName" id="username" required>
         <label for="PassWord"><h4>Password</h4></label>
-        <input type="password" name="password" required>
+        <input type="password" name="password" id="PassWord" required>
         <h4 class="password_check" id="password_strength"></h4>
         <label for="confirm"><h4>Confirm Password</h4></label>
-        <input type="password" name="pconfirm" required>
+        <input type="password" name="pconfirm" id="confirm" required>
         <h4 class="password_check" id="matched_passwd"></h4>
         <label for="email"><h4>Email Address</h4></label>
-        <input type="email" name="email" required>
+        <input type="email" name="email" id="email" required>
         <br/><br/>
         <h4 id="submitError"></h4>
         <input type="submit" name="submit" value="Submit">

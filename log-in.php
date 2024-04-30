@@ -1,14 +1,11 @@
 <?php
 session_start();
 
-//if( isset($_SESSION['user'])!="" ){
-//   header("Location: log-in.php");
-//}
-include_once 'connect.php';
+  include_once 'connect.php';
 
-if ( isset($_POST['sca']) ) {
+  if ( isset($_POST['sca']) ) {
     $username = trim($_POST['username']);
-    $pass = trim($_POST['pass']);
+    $pass = trim($_POST['pwd']);
     $password = hash('sha256', $pass);
     
     $query = "select userid, username, pass from people where username=?";
@@ -19,35 +16,45 @@ if ( isset($_POST['sca']) ) {
 
     if( $count == 1 && $row['pass']==$password ) {
         $_SESSION['user'] = $row['userid'];
-        $message="Success!";
         header("Location: log-in.php");
     }
     else {
         $message = "Invalid Login";
     }
     $_SESSION['message'] = $message;
-}
-?>
-
-<html>
-<head><title>Login</title></head>
-<body>
-<p><h1>
-<?php
-  if ( isset($message) ) {
-    echo $message;
-    echo "row " . $row;
-    echo "username " . $username;
-    echo "password " . $password;
-    echo "count " . $count;
   }
 ?>
-</h1></p>
 
-<form action="log-in.php" method="post">
-Username: <input type="text" name="username" /><br /><br />
-Password: <input type="password" name="pass" /><br /><br />
-<input type="submit" name="sca" value="Login" /> <br />
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Log In</title>
+</head>
+
+<body class="LogIn">
+    <div class="LogIn">
+    <form action="log-in.php" method="post" onsubmit="log_in_submit()">
+        <label for="LogIn"><h4>Please LogIn</h4></label>
+        <input type="text" name="usename" required>
+        <label for="password-log"><h4>Password</h4></label>
+        <input type="password" name="pwd" required>
+        <input type="submit" value="Submit" name="sca">
+        <?php
+           if ( isset($_POST['sca']) )
+           {
+             echo "<h2>$message</h2>";
+           }
+           if( isset($_SESSION['user'])!="" ) 
+           {
+             echo "<h3>Session Already Exists<h3></br>" .
+                  "<h4>Log-In again or</h4></br>" .
+                  "<h4><a href='logout.php'>Logout</a></h4></br>";
+           }
+        ?>
+    </form>
+    </div>
 </body>
+<script src="log-in.js" defer></script>
 </html>

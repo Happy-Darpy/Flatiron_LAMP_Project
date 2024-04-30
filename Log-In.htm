@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>User Profile Page</title>
+    <title>Log In</title>
 </head>
 
 <body class="LogIn">
     <div class="LogIn">
-    <form action="user_profile.htm" method="post">
+    <form action="Log-In.htm" method="post" onsubmit="log_in_submit()">
         <label for="LogIn"><h4>Please LogIn</h4></label>
         <input type="text" name="Login" required>
         <label for="password-log"><h4>Password</h4></label>
         <input type="password" name="pwd" required>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" name="sca">
     </form>
     </div>
 </body>

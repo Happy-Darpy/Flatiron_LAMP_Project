@@ -12,7 +12,7 @@
   $stmt = $pdo->prepare($query);
   $stmt->execute([$_SESSION['user']]);
   $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
-  $fname = $userRow['fnmae'];
+  $fname = $userRow['fname'];
 ?>
 
 <!DOCTYPE html>

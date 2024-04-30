@@ -5,11 +5,9 @@ let password = document.getElementsByName('password')[0];
 let pconfirm = document.getElementsByName('pconfirm')[0];
 let email = document.getElementsByName('email')[0];
 let email_confirm = "";
-let formErrorType = { Valid: 0, Missing : 4, Invalid : 1};
+let formErrorType = { Valid: 0, Invalid : 1};
 // Assocaitive-Array will have 0 if there is no problem...
-let formError = {regex_check : formErrorType.Missing, 
-                    password_req : formErrorType.Missing, 
-                    passwd_match : formErrorType.Missing};
+let formError = formErrorType.Invalid;
 
 function check_name_input(event){
     let input_field = event.target.value;
@@ -43,12 +41,7 @@ function check_name_input(event){
 
     if (input_field == "") {
         event.target.style.color = 'black';
-        formError['regex_check'] = formErrorType.Missing;
     };
-
-    console.log("check_name_input: regex " + formError['regex_check']);
-    console.log("                   password_req " + formError['password_req']);
-    console.log("                   passwd_match " + formError['passwd_match'])
 };
 
 function check_password_strength(event){
@@ -62,7 +55,7 @@ function check_password_strength(event){
     lenPasswd = input_field.length;
     if ((lenPasswd < 8 && lenPasswd > 0) || lenPasswd > 31) {
         textPasswordStrength = "minimum 8 maximum 31 characters";
-        formError['password_req'] = formErrorType.Invalid;
+        formError = formErrorType.Invalid;
     }
     else {
         // value of password_strength reflects how many of the
@@ -91,19 +84,13 @@ function check_password_strength(event){
             default:
                 alert("what??");
         }
-        formError['password_req'] = formErrorType.Valid;
+        formError = formErrorType.Valid;
     }
 
     if (lenPasswd==0) { 
         textPasswordStrength = "";
-        formError['password_req'] = formErrorType.Missing;
     };
     elmPasswordStrength.innerHTML = textPasswordStrength;  
-
-    console.log("in Check_password_strength");
-    console.log("       regex " + formError['regex_check']);
-    console.log("       password_req " + formError['password_req']);
-    console.log("       passwd_match " + formError['passwd_match']);
 };
 
 function check_if_password_match(event){
@@ -114,81 +101,44 @@ function check_if_password_match(event){
 
     if (confirm_passwd != entered_passwd) {
         passwd_match = "Passwords don't match!";
-        formError['passwd_match'] = formErrorType.Invalid;
+        formError = formErrorType.Invalid;
     }
     else {
         passwd_match = "Passwords match.";
-        formError['passwd_match'] = formErrorType.Valid;
+        formError = formErrorType.Valid;
     }
 
     if (confirm_passwd == "") { 
         elmPassMatchMessage.innerHTML = "";
-        formError['passwd_match'] = formErrorType.Missing;
     }
     else {
         elmPassMatchMessage.innerHTML = passwd_match;
     }
-
-    console.log("in Check_password_match");
-    console.log("       regex " + formError['regex_check']);
-    console.log("       password_req " + formError['password_req']);
-    console.log("       passwd_match " + formError['passwd_match']);
 }
 
 function clear_button_clicked(event) {
     location.reload();
 };
 
-function sendVerificationEmail() {
-    let email_address = email.value;
-    fetch('send_email.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email: email_address })
-    })
-    .then(response => response.json())
-    .then(data => {
-      email_confirm = data.message;
-    })
-    .catch(error => console.error('Error:', error));
-  }
-
 function onclick_submit()
 {
+    let myForm = document.getElementsByName("CreateAcct")[0];
     let submitError = document.getElementById("submitError");
     let errorMsg = "";
 
     //error check
     console.log("entered submit call back");
 
-    let errCheck = formError['regex_check'] + 
-                    formError['password_req'] +
-                    formError['passwd_match'];
-    
-    console.log("errorcheck " + errCheck);
-    console.log("  regex " + formError['regex_check']);
-    console.log("  password_req " + formError['password_req']);
-    console.log("  passwd_match " + formError['passwd_match']);
-
-    if (errCheck != 0) {
+    if (formError != formErrorType.Valid) {
         submitError.style.color = 'red';
-    }
-    else {
-        submitError.style.color = 'black';
+        errorMsg = "One or More Entry is Invalid!";
+        submitError.innerHTML = errorMsg;
+        return false;
     }
 
-    switch (true) {
-        case (errCheck > 4):
-            errorMsg = "One or More Entry is Missing!";
-            submitError.innerHTML = errorMsg;
-            return false;
-        case (errCheck > 0):
-            errorMsg = "One or More Entry is Invalid!";
-            submitError.innerHTML = errorMsg;
-            return false;
-    }
+    //if any of the required field is empty, then return false
+    let formElements = myForm.formElements;
+    console.log(formElements.length);
 
     let email_address = email.value;
     localStorage.setItem("email",email_address);

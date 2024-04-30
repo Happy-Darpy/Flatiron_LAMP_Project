@@ -16,7 +16,7 @@ session_start();
 
     if( $count == 1 && $row['pass']==$password ) {
         $_SESSION['user'] = $row['userid'];
-        header("Location: log-in.php");
+        header("Location: user_profile.htm");
     }
     else {
         $message = "Invalid Login";
@@ -46,6 +46,7 @@ session_start();
            {
              echo "<h2>$message</h2>";
            }
+
            if( isset($_SESSION['user'])!="" ) 
            {
              echo "<h3>Session Already Exists<h3></br>" .

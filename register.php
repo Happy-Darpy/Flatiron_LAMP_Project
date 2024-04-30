@@ -7,12 +7,6 @@ header("Location: log-in.php");
 
 include_once 'connect.php';
 
-error_log("inside of register.php for sure!!!");
-error_log('value of $_POST["CreateAcct"]');
-error_log($_POST['CreateAcct']);
-error_log('value of $_POST["UserName"]');
-error_log($_POST['UserName']);
-
 if ( isset($_POST['submit']) ) {
   $username = trim($_POST['UserName']);
   $fname = trim($_POST['FirstName']);
@@ -21,7 +15,18 @@ if ( isset($_POST['submit']) ) {
   $email = trim($_POST['email']);
   $password = hash('sha256', $pass);
 
-  error_log($username . " " . $fname . " " . $lname);
+  //Make sure there isn't any duplicate username
+  $query = "select * from people where username= :value";
+  $stmt = $pdo->prepare($query);
+  $stmt->bindParam(':value',$username);
+  $stmt->execute();
+  $userCount = $stmt->rowCount();
+
+  if ($userCount > 0) {
+    $msg = urlencode("yes");
+    header("Location: Create-Acct.htm?userexist=$msg");
+    exit();
+  }
 
   $query = "insert into people(username,fname,lname,pass) values(?, ?, ?, ?)";
   $stmt = $pdo->prepare($query);

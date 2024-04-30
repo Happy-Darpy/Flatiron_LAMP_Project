@@ -5,7 +5,6 @@ let password = document.getElementsByName('password')[0];
 let pconfirm = document.getElementsByName('pconfirm')[0];
 let email = document.getElementsByName('email')[0];
 let email_confirm = "";
-let form = document.getElementsByName('CreateAcct')[0];
 let formErrorType = { Valid: 0, Missing : 4, Invalid : 1};
 // Assocaitive-Array will have 0 if there is no problem...
 let formError = {regex_check : formErrorType.Missing, 
@@ -39,13 +38,17 @@ function check_name_input(event){
     }
     else {
         event.target.style.color = 'red';
-        formError['regex_check'] = formError.Invalid;
+        formError['regex_check'] = formErrorType.Invalid;
     };
 
-    if (input_field === "") {
-        event.target.syle.color = 'black';
+    if (input_field == "") {
+        event.target.style.color = 'black';
         formError['regex_check'] = formErrorType.Missing;
     };
+
+    console.log("check_name_input: regex " + formError['regex_check']);
+    console.log("                   password_req " + formError['password_req']);
+    console.log("                   passwd_match " + formError['passwd_match'])
 };
 
 function check_password_strength(event){
@@ -88,15 +91,19 @@ function check_password_strength(event){
             default:
                 alert("what??");
         }
+        formError['password_req'] = formErrorType.Valid;
     }
 
-    if (input_field==0) { 
+    if (lenPasswd==0) { 
         textPasswordStrength = "";
         formError['password_req'] = formErrorType.Missing;
     };
-    elmPasswordStrength.innerHTML = textPasswordStrength;
-    formError['password_req'] = formErrorType.Valid;
-    
+    elmPasswordStrength.innerHTML = textPasswordStrength;  
+
+    console.log("in Check_password_strength");
+    console.log("       regex " + formError['regex_check']);
+    console.log("       password_req " + formError['password_req']);
+    console.log("       passwd_match " + formError['passwd_match']);
 };
 
 function check_if_password_match(event){
@@ -122,6 +129,10 @@ function check_if_password_match(event){
         elmPassMatchMessage.innerHTML = passwd_match;
     }
 
+    console.log("in Check_password_match");
+    console.log("       regex " + formError['regex_check']);
+    console.log("       password_req " + formError['password_req']);
+    console.log("       passwd_match " + formError['passwd_match']);
 }
 
 function clear_button_clicked(event) {
@@ -144,7 +155,7 @@ function sendVerificationEmail() {
     .catch(error => console.error('Error:', error));
   }
 
-function onclick_submit(event)
+function onclick_submit()
 {
     let submitError = document.getElementById("submitError");
     let errorMsg = "";
@@ -156,6 +167,11 @@ function onclick_submit(event)
                     formError['password_req'] +
                     formError['passwd_match'];
     
+    console.log("errorcheck " + errCheck);
+    console.log("  regex " + formError['regex_check']);
+    console.log("  password_req " + formError['password_req']);
+    console.log("  passwd_match " + formError['passwd_match']);
+
     if (errCheck != 0) {
         submitError.style.color = 'red';
     }
@@ -175,8 +191,9 @@ function onclick_submit(event)
     }
 
     let email_address = email.value;
-    localStorage.setItem("email",email_address);
-};
+    //localStorage.setItem("email",email_address);
+    return true;
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     firstName.addEventListener('input',check_name_input);

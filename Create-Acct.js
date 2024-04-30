@@ -123,7 +123,7 @@ function check_if_password_match(event){
 }
 
 function clear_button_clicked(event) {
-    history.pushState({}, document.title, "/");
+    history.pushState({}, document.title, "/Flatiron_LAMP_Project/Create-Acct.htm");
     location.reload();
 };
 

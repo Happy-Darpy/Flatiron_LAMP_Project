@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if( isset($_SESSION['user'])!="" ){
-   header("Location: user_profile.htm");
-}
+//if( isset($_SESSION['user'])!="" ){
+//   header("Location: log-in.php");
+//}
 include_once 'connect.php';
 
 if ( isset($_POST['sca']) ) {
@@ -19,7 +19,7 @@ if ( isset($_POST['sca']) ) {
 
     if( $count == 1 && $row['pass']==$password ) {
         $_SESSION['user'] = $row['userid'];
-        header("Location: user_profile.htm");
+        header("Location: log-in.php");
     }
     else {
         $message = "Invalid Login";

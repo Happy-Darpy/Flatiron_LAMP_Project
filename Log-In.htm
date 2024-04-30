@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>My Form Page</title>
-    <link rel="stylesheet" href="index_main.css">
-    <script src="index_main.js"></script>
+    <title>User Profile Page</title>
 </head>
 
 <body class="LogIn">
     <div class="LogIn">
-    <form action="Log-In.htm" method="post">
+    <form action="user_profile.htm" method="post">
         <label for="LogIn"><h4>Please LogIn</h4></label>
-        <input type="text" name="Login">
+        <input type="text" name="Login" required>
         <label for="password-log"><h4>Password</h4></label>
-        <input type="password" name="pwd">
+        <input type="password" name="pwd" required>
         <input type="submit" value="Submit">
     </form>
     </div>
 </body>
+<script src="log-in.js" defer></script>
 </html>

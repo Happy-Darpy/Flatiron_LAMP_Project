@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if( isset($_SESSION['user'])!="" ){
+i/* f( isset($_SESSION['user'])!="" ){
    header("Location: index.php");
-}
+} */
 include_once 'connect.php';
 
 if ( isset($_POST['sca']) ) {
@@ -35,6 +35,10 @@ if ( isset($_POST['sca']) ) {
 <?php
   if ( isset($message) ) {
     echo $message;
+    echo "row " . $row;
+    echo "username " . $username;
+    echo "password " . $password;
+    echo "count " . $count
   }
 ?>
 </h1></p>

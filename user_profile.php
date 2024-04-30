@@ -41,6 +41,9 @@
                 </tr>
             </table>
             <input type="submit" action="index_main.htm" method="post" name="logout" value="LOGOUT">
+            <?php
+               echo "userRow : $userRow";
+            ?>
         </form>
     </div>
 </body>

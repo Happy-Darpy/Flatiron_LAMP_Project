@@ -8,6 +8,10 @@ header("Location: profile.php");
 include_once 'connect.php';
 
 error_log("inside of register.php for sure!!!");
+error_log('value of $_POST["CreateAcct"]');
+error_log($_POST['CreateAcct']);
+error_log('value of $_POST["UserName"]');
+error_log($_POST['UserName']);
 
 if ( isset($_POST['CreateAcct']) ) {
   $username = trim($_POST['UserName']);

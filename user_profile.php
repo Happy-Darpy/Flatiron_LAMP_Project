@@ -27,7 +27,7 @@
 
 <body class="main">
     <div class="main">
-        <form class="main" action="logout.php" metho="post">
+        <form class="main" action="logout.php" method="post">
             <table>
                 <tr>
                     <td>First Name:</td>
@@ -42,7 +42,7 @@
                     <td>sample@example.com</td>
                 </tr>
             </table>
-            <input type="submit" action="index_main.htm" method="post" name="logout" value="LOGOUT">
+            <input type="submit" method="post" name="logout" value="LOGOUT">
         </form>
     </div>
 </body>
